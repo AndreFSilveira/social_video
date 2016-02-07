@@ -1,0 +1,10 @@
+<%= simple_form_for @user do |f| %>
+    <%= render 'shared/error_messages', object: @user %>
+
+    <%= f.input :name, wrapper: :materialize_input %>
+    <%= f.input :email, wrapper: :materialize_input %>
+    <%= f.input :password, wrapper: :materialize_input %>
+    <%= f.input :password_confirmation, wrapper: :materialize_input %>
+
+    <%= f.button :button, wrapper: :materialize_button  %>
+<% end %>

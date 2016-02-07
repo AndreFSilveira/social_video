@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
 gem 'factory_girl'
 gem 'simple_form'
+gem 'faker', '1.4.2'
+gem 'will_paginate', '3.0.7'
+gem 'will_paginate-materialize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
