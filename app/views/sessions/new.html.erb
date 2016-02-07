@@ -1,0 +1,20 @@
+<% provide(:title, "Log in") %>
+<h1 class="center">Log in</h1>
+
+<div class="row">
+  <div class="col m6 offset-m3 s12">
+    <%= simple_form_for :session, wrapper: :vertical_form, url: login_path do |f| %>
+
+        <%= f.input :email, wrapper: :materialize_input %>
+        <%= f.input :password, wrapper: :materialize_input %>
+        <p>
+          <%= f.check_box :remember_me,as: :boolean, wrapper: :vertical_radio_and_checkboxes %>
+          <%= f.label 'remember_me', id:'remember_me' %>
+        </p>
+
+        <%= f.button :button, wrapper: :materialize_button %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+  </div>
+</div>
