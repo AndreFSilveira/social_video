@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :reset_token
 	before_save :downcase_email
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
 	validates :password , presence: true, length: {minimum: 6}, allow_nil: true
 	validates :email, presence: true, length: { maximum: 150 }, format: { with: VALID_EMAIL_REGEX },
 		uniqueness: { case_sensitive: false }
-  
+
+	has_friendship
+
   has_many :comments, dependent: :destroy
   has_many :ratings, dependent: :destroy
 
@@ -38,8 +40,26 @@ class User < ActiveRecord::Base
 		update_attribute(:remember_digest, nil)
 	end
 
+	def create_reset_digest
+		self.reset_token = User.new_token
+		update_columns(reset_digest:  User.digest(reset_token),
+									 reset_sent_at: Time.zone.now)
+	end
+
+	def send_password_reset_email
+		UserMailer.password_reset(self).deliver_now
+	end
+
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago
+	end
+
+	def has_requested_friend(user)
+		self.requested_friends.exists?(user)
+	end
+
 	private
-    # Converts email to all lower-case.
+
     def downcase_email
       self.email = email.downcase
     end

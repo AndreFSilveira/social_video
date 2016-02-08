@@ -5,4 +5,19 @@
       | <%= link_to "delete", user, method: :delete,
                     data: { confirm: "You sure?" } %>
   <% end %>
+
+  <% if current_user.admin? && ! user.admin? %>
+      | <%= link_to "admin", user_make_admin_path(user) %>
+  <% elsif !current_user?(user) %>
+      | <%= link_to "revoke admin", user_revoke_admin_path(user) %>
+  <% end %>
+
+  <% if !current_user.friends_with?(user) && !current_user?(user) %>
+      |
+      <% if current_user.has_requested_friend user %>
+          <%= link_to "confirm a friendship", user_confirm_friendship_path(user) %>
+      <% else %>
+          <%= link_to "add a friend", user_add_friend_path(user) %>
+      <% end %>
+  <% end %>
 </li>

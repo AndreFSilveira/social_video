@@ -1,14 +1,4 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <% if logged_in? %>
-    <ul id="dropdown1" class="dropdown-content">
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <li class="divider"></li>
-      <li>
-        <%= link_to "Log out", logout_path, method: "delete" %>
-      </li>
-    </ul>
-  <% end %>
     <nav>
       <div class="container">
         <ul class="nav navbar-nav navbar-right">
@@ -16,11 +6,21 @@
           <% if logged_in? %>
               <li><%= link_to "Users", users_path %></li>
               <li class="dropdown">
+              <li><%= link_to "Amizades", user_friendship_path %></li>
               <li>
                 <a class="dropdown-button" href="#!" data-activates="dropdown1">
                   Dropdown
                   <i class="material-icons right">arrow_drop_down</i>
                 </a>
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><%= link_to "Profile", current_user %></li>
+                  <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                  <li><%= link_to "Amizades", user_friendship_path %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Log out", logout_path, method: "delete" %>
+                  </li>
+                </ul>
               </li>
           <% else %>
               <li><%= link_to "Log in", login_path %></li>
