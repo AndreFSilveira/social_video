@@ -14,6 +14,8 @@
 //= require materialize-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 
 jQuery( document ).ready(function($){

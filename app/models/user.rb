@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 	has_secure_password
 	has_friendship
+	ratyrate_rater
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

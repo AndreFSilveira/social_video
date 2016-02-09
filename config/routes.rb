@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get 'comments/aprove/:id' => 'comments#aprove', as: 'comment_aprove'
   delete 'comments/destroy/:id' => 'comments#destroy', as: 'comment_destroy'
 
+  post '/rate' => 'rater#create', :as => 'rate'
+
 end

@@ -10,6 +10,10 @@
   <%= @video.link %>
 </p>
 
+<p>
+  <%= rating_for @video, "video", :star => 5, :disable_after_rate => true %>
+</p>
+
 <h2>Comments</h2>
 <% @video.comments.each do |comment| %>
     <p>

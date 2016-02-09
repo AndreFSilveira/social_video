@@ -10,6 +10,10 @@
   <%= @news.content %>
 </p>
 
+<p>
+  <%= rating_for @news, "news", :star => 5, :disable_after_rate => true %>
+</p>
+
 <h2>Comments</h2>
 <% @news.comments.each do |comment| %>
     <p>
