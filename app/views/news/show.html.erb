@@ -10,5 +10,19 @@
   <%= @news.content %>
 </p>
 
+<h2>Comments</h2>
+<% @news.comments.each do |comment| %>
+    <p>
+      <b>Comment:</b>
+      <%= comment.content %>
+    </p>
+<% end %>
+
+<%= simple_form_for ([@news, @news.comments.build ]) do |f| %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+<% end %>
+
 <%= link_to 'Edit', edit_news_path(@news) %> |
 <%= link_to 'Back', news_index_path %>

@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :tags
-  resources :videos
-  resources :news
+  resources :videos do
+    resource :comments
+  end
+  resources :news do
+    resource :comments
+  end
   resources :users
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
@@ -18,5 +22,8 @@ Rails.application.routes.draw do
   get 'friendship' => 'users#friendship', as: 'user_friendship'
   get 'add_friend/:id' => 'users#add_friend', as: 'user_add_friend'
   get 'confirm_friendship/:id' => 'users#confirm_friendship', as: 'user_confirm_friendship'
+
+  get 'comments/aprove/:id' => 'comments#aprove', as: 'comment_aprove'
+  delete 'comments/destroy/:id' => 'comments#destroy', as: 'comment_destroy'
 
 end

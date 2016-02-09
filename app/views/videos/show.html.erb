@@ -10,5 +10,29 @@
   <%= @video.link %>
 </p>
 
+<h2>Comments</h2>
+<% @video.comments.each do |comment| %>
+    <p>
+      <b>Comment:</b>
+      <% if !comment.aprove? %>
+        <% if current_user.admin? %>
+          <%= comment.content %>
+          <p>
+            <%= link_to "Aprovar", comment_aprove_path(comment) %>
+            | <%= link_to "Excluir", comment_destroy_path(comment), method: :delete  %>
+          </p>
+        <% end %>
+      <% else %>
+        <%= comment.content %>
+      <% end %>
+    </p>
+<% end %>
+
+<%= simple_form_for ([@video, @video.comments.build ]) do |f| %>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
+
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

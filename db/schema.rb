@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208112024) do
+ActiveRecord::Schema.define(version: 20160209143032) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    limit: 65535
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "video_id",   limit: 4
+    t.integer  "news_id",    limit: 4
+    t.boolean  "aprove",                   default: false
   end
 
+  add_index "comments", ["news_id"], name: "index_comments_on_news_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["video_id"], name: "index_comments_on_video_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendable_id",   limit: 4
@@ -38,6 +43,16 @@ ActiveRecord::Schema.define(version: 20160208112024) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "news_tags", force: :cascade do |t|
+    t.integer  "news_id",    limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "news_tags", ["news_id"], name: "index_news_tags_on_news_id", using: :btree
+  add_index "news_tags", ["tag_id"], name: "index_news_tags_on_tag_id", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "value",      limit: 4
@@ -68,6 +83,16 @@ ActiveRecord::Schema.define(version: 20160208112024) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "video_tags", force: :cascade do |t|
+    t.integer  "video_id",   limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "video_tags", ["tag_id"], name: "index_video_tags_on_tag_id", using: :btree
+  add_index "video_tags", ["video_id"], name: "index_video_tags_on_video_id", using: :btree
+
   create_table "videos", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.string   "link",       limit: 255
@@ -77,6 +102,12 @@ ActiveRecord::Schema.define(version: 20160208112024) do
 
   add_index "videos", ["link"], name: "index_videos_on_link", unique: true, using: :btree
 
+  add_foreign_key "comments", "news"
   add_foreign_key "comments", "users"
+  add_foreign_key "comments", "videos"
+  add_foreign_key "news_tags", "news"
+  add_foreign_key "news_tags", "tags"
   add_foreign_key "ratings", "users"
+  add_foreign_key "video_tags", "tags"
+  add_foreign_key "video_tags", "videos"
 end
