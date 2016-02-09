@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token, :reset_token
 	before_save :downcase_email
-	
+
+	has_many :comments, dependent: :destroy
+	has_secure_password
+	has_friendship
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 	validates :name,  presence: true, length: { maximum: 50 }
@@ -9,12 +13,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, length: { maximum: 150 }, format: { with: VALID_EMAIL_REGEX },
 		uniqueness: { case_sensitive: false }
 
-	has_friendship
 
-  has_many :comments, dependent: :destroy
-  has_many :ratings, dependent: :destroy
-
-  has_secure_password
 
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
