@@ -1,0 +1,10 @@
+pt-BR:
+  header:
+    links:
+      users: 'Usuários'
+      friends: 'Amigos'
+      video: 'Vídeo'
+      news: 'Notícia'
+      account: 'sua conta'
+  home:
+      title: 'Bem vindo ao Social Video'
