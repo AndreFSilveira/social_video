@@ -1,10 +1,15 @@
-<footer class="page-footer">
-  <nav>
+<footer class="page-footer grey darken-3">
+  <nav class="grey darken-2">
     <div class="container">
-      <ul>
-        <li><%= link_to "About",   '#' %></li>
-        <li><%= link_to "Contact", '#' %></li>
-        <li><a href="http://news.railstutorial.org/">News</a></li>
+      <ul class="right">
+        <li>
+          <%= link_to "Social Video", root_path%>
+        </li>
+      </ul>
+      <ul class="left">
+        <li>
+          <%= t('footer.rights') %> - <%= Date.current.year%>
+        </li>
       </ul>
     </div>
   </nav>

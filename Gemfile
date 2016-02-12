@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'materialize-sass'
 gem 'simple_form'
+gem 'factory_girl'
 gem 'faker', '1.4.2'
 gem 'will_paginate', '3.0.7'
 gem 'will_paginate-materialize'
@@ -54,7 +55,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-  gem 'factory_girl'
 
   # Use mysql as the database for Active Record
   gem 'mysql2', '~> 0.3.10'

@@ -1,12 +1,13 @@
 class VideosController < ApplicationController
   before_action :logged_in_user, only: [:create, :new, :show, :index, :destroy]
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show,:create, :edit, :update, :destroy]
 
   def index
     @videos = Video.all
   end
 
   def show
+    @comments = @video.comments
   end
 
   def new
@@ -45,6 +46,6 @@ class VideosController < ApplicationController
     end
 
     def video_params
-      params.require(:video).permit(:title, :link, :tag_ids => [])
+      params.require(:video).permit(:title_pt_br, :title_es, :link, :tag_ids => [])
     end
 end

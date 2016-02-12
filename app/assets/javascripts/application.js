@@ -16,10 +16,6 @@
 //= require turbolinks
 //= require jquery.raty
 //= require ratyrate
+//= require custom
 //= require_tree .
-
-jQuery( document ).ready(function($){
-    $(".dropdown-button").dropdown();
-    $('select').material_select();
-})
 

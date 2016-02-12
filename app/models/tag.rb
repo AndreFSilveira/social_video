@@ -6,4 +6,6 @@ class Tag < ActiveRecord::Base
   has_many :videos, through: :video_tags
 
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
+
+  translates :name
 end

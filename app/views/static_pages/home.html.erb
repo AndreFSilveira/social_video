@@ -1,5 +1,30 @@
 <div class="center jumbotron">
-  <h1><%= t('home.title') %> <small>&reg;</small></h1>
-
-  <%= link_to "Login", login_path, class: "btn btn-lg btn-primary" %>
+  <div class="parallax-container">
+    <div class="parallax"> <%= image_tag("bg-home-1.jpg", alt: "Video News", class: "responsive-img") %> </div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <p class="grey-text text-darken-3 lighten-3">
+        <h1><%= t('home.title') %></h1>
+      </p>
+    </div>
+    <div class="row">
+      <h5 class="center"> <%= t("home.subtitle.news") %> </h5>
+      <div class="col s12 m6">
+        <h3 class="center"><%= t("video")%></h3>
+        <div class="list-video">
+          <%= render 'static_pages/videos' %>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <h3 class="center"><%= t("news")%></h3>
+        <div class="list-news">
+          <%= render 'static_pages/news' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag("bg-home-2.png", alt: "Video News", class: "responsive-img") %></div>
+  </div>
 </div>

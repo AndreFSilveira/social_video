@@ -1,0 +1,12 @@
+<% @videos.each do |video| %>
+ <div class="row">
+   <div class="col s12 m8 offset-m2">
+     <h6><%= video.title %></h6>
+     <div class="video-container">
+       <%= embed(video.link) %>
+     </div>
+     <small> <%= l video.updated_at.to_date %> </small>
+   </div>
+ </div>
+<% end %>
+

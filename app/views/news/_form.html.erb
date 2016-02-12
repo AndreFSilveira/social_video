@@ -10,8 +10,13 @@
       </ul>
     </div>
   <% end %>
-    <%= f.input :title, wrapper: :materialize_input %>
-    <%= f.input :content, wrapper: :materialize_textarea %>
+    <% News.locale_columns(:title).each do |column| %>
+        <%= f.input column, wrapper: :materialize_input %>
+    <% end %>
+    <% News.locale_columns(:content).each do |column| %>
+        <%= f.input column, wrapper: :materialize_textarea %>
+    <% end %>
+
     <%= f.association :tags %>
   <div class="actions">
     <%= f.button :submit %>

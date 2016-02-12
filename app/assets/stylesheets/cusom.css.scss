@@ -2,8 +2,60 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
+  header{
+    nav{
+      overflow: hidden;
+      ul{
+        li.space {
+          width: 40px;
+          height: 1px;
+        }
+        li.translate-icons {
+          padding: 0px;
+          margin-top: 10px;
+          width: 40px;
+          a{
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+  main {
+    flex: 1 0 auto;
+    .jumbotron{
+      h1{
+        font-family: 'Pacifico', cursive;
+      }
+      h5{
+        text-decoration: underline;
+      }
+      h6{
+        text-decoration: underline;
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+      .list-news{
+        span.news-start, span.news-end {
+          font-family: 'Pacifico', cursive;
+          font-size: 40px;
+        }
+        span.news-start{
+          display: block;
+          text-align: left;
+        }
+        span.news-end{
+          display: block;
+          text-align: right;
+        }
+        p.news-content{
+          margin: 0;
+        }
+      }
+    }
+  }
+  footer{
+    margin: 0!important;
+    padding: 0!important;
+  }
 }

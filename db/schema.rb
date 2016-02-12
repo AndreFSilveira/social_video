@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160210013558) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content_pt-BR", limit: 65535
+    t.text     "content_pt_br", limit: 65535
     t.integer  "user_id",       limit: 4
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
@@ -48,10 +48,12 @@ ActiveRecord::Schema.define(version: 20160210013558) do
   end
 
   create_table "news", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "title_pt_br",   limit: 255
+    t.text     "content_pt_br", limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "title_es",      limit: 255
+    t.string   "content_es",    limit: 255
   end
 
   create_table "news_tags", force: :cascade do |t|
@@ -98,9 +100,10 @@ ActiveRecord::Schema.define(version: 20160210013558) do
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name_pt_br", limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "name_es",    limit: 255
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,10 +131,11 @@ ActiveRecord::Schema.define(version: 20160210013558) do
   add_index "video_tags", ["video_id"], name: "index_video_tags_on_video_id", using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "link",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "title_pt_br", limit: 255
+    t.string   "link",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "title_es",    limit: 255
   end
 
   add_index "videos", ["link"], name: "index_videos_on_link", unique: true, using: :btree

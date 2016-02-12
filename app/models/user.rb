@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
 	before_save :downcase_email
 
 	has_many :comments, dependent: :destroy
-	has_secure_password
-	has_friendship
-	ratyrate_rater
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -14,6 +11,9 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, length: { maximum: 150 }, format: { with: VALID_EMAIL_REGEX },
 		uniqueness: { case_sensitive: false }
 
+	has_secure_password
+	has_friendship
+	ratyrate_rater
 
 
 	def User.digest(string)

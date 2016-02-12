@@ -10,8 +10,10 @@
       </ul>
     </div>
   <% end %>
+    <% Video.locale_columns(:title).each do |column| %>
+          <%= f.input column, wrapper: :materialize_input %>
+    <% end %>
 
-    <%= f.input :title, wrapper: :materialize_input %>
     <%= f.input :link, wrapper: :materialize_input %>
 
   <div class="actions">
