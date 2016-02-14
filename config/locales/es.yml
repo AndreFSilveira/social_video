@@ -71,6 +71,8 @@ es:
             destroy: 'Borrar'
             title: 'Deje su comentario a continuación'
             rating: 'Valorar esta noticia'
+        find: 'encontrar'
+        find_by: 'Búsqueda por:'
     video:
       action:
         show-login: 'Inicia sesión para comentar'

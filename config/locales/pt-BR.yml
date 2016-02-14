@@ -73,6 +73,8 @@ pt-BR:
             destroy: 'Excluir'
             title: 'Deixe seu comentário abaixo'
             rating: 'Avalie essa notícia'
+        find: 'buscar'
+        find_by: 'Encontre por:'
     video:
       action:
         show-login: 'Fazer login para comentar'

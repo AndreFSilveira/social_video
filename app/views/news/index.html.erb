@@ -9,9 +9,16 @@
   <% end %>
 
   <%= form_tag search_news_index_path, :method => :get do %>
-    <p>
-      <%= text_field_tag :query, params[:query] %> <%= submit_tag "Search!" %>
-    </p>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= text_field_tag :query, params[:query] %>
+          <%= label_tag(:query, t("page.news.action.find_by")) %>
+        </div>
+        <div class="input-field col s6">
+          <button class="btn waves-effect waves-light"><%= t("page.news.action.find")%></button>
+        </div>
+      </div>
+
   <% end %>
 
   <%= will_paginate %>

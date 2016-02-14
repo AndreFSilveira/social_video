@@ -44,8 +44,8 @@ class NewsController < ApplicationController
   end
 
   def search
-    @news = News.solr_search do
-      keywords params[:query]
+    @news = News.search do
+      fulltext params[:query]
       paginate(page: params[:page], per_page: (params[:per] || 12))
     end.results
   end
