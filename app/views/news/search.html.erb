@@ -1,0 +1,9 @@
+<% provide(:title, t("page.title.news.search") ) %>
+<div class="search-index container">
+  <h1><%= t("page.title.news.search") %></h1>
+  <div class="row">
+    <%= will_paginate %>
+      <%= render @news %>
+    <%= will_paginate %>
+  </div>
+</div>

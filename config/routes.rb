@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       resource :comments
     end
     resources :news do
+     collection do
+      get :search
+     end
       resource :comments
     end
     resources :users
@@ -28,5 +31,5 @@ Rails.application.routes.draw do
     delete 'comments/destroy/:id' => 'comments#destroy', as: 'comment_destroy'
 
     post '/rate' => 'rater#create', :as => 'rate'
-  end
+   end
 end

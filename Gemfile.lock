@@ -61,6 +61,7 @@ GEM
       activesupport (>= 4.1.0)
     has_friendship (0.1.0)
       rails (~> 4.0)
+    highline (1.7.8)
     i18n (0.7.0)
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -86,8 +87,12 @@ GEM
     mysql2 (0.3.20)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    options (2.3.2)
     pg (0.17.1)
     pr_geohash (1.0.0)
+    progress_bar (1.0.5)
+      highline (~> 1.6)
+      options (~> 2.3.0)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.4)
@@ -196,6 +201,7 @@ DEPENDENCIES
   materialize-sass
   mysql2 (~> 0.3.10)
   pg (= 0.17.1)
+  progress_bar
   puma (= 2.11.1)
   rails (= 4.2.4)
   rails_12factor (= 0.0.2)

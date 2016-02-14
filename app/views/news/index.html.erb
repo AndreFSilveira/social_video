@@ -8,6 +8,12 @@
     <% end %>
   <% end %>
 
+  <%= form_tag search_news_index_path, :method => :get do %>
+    <p>
+      <%= text_field_tag :query, params[:query] %> <%= submit_tag "Search!" %>
+    </p>
+  <% end %>
+
   <%= will_paginate %>
     <div class="row">
       <%= render @news%>

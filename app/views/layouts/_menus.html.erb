@@ -10,11 +10,14 @@
     </li>
 <% else %>
     <li>
+      <%= link_to t("header.links.register"),new_user_path %>
+    </li>
+    <li>
       <%= link_to login_path do %>
           <%= t("header.links.login") %>
           <i class="material-icons right">account_circle</i>
       <% end %>
-       </li>
+    </li>
 
 <% end %>
 <li class="space"></li>

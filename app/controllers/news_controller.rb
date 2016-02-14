@@ -43,6 +43,13 @@ class NewsController < ApplicationController
     redirect_to news_index_url, notice: 'News was successfully destroyed.'
   end
 
+  def search
+    @news = News.solr_search do
+      keywords params[:query]
+      paginate(page: params[:page], per_page: (params[:per] || 12))
+    end.results
+  end
+
   private
     def set_news
       @news = News.find(params[:id])

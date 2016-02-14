@@ -10,6 +10,7 @@ pt-BR:
       account: 'Sua conta'
       login: 'Entrar'
       tag: 'Tags'
+      register: 'Cadastrar-se'
   footer:
     rights: "Todos os direitos reservados"
   home:
@@ -28,6 +29,7 @@ pt-BR:
         index: 'Lista de Notícias'
         create: 'Nova Notícia'
         edit: 'Editar Notícia'
+        search: 'Buscar Notícia'
       videos:
         index: 'Lista de vídeos'
         edit: 'Editar vídeo'

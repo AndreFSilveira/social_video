@@ -10,4 +10,8 @@ class News < ActiveRecord::Base
   ratyrate_rateable "news"
   translates :title, :content, :tags
 
+  searchable do
+    text :title, :content
+  end
+
 end
