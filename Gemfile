@@ -40,6 +40,7 @@ gem 'has_friendship'
 gem 'ratyrate'
 gem 'traco', '~> 3.1', '>= 3.1.6'
 gem 'jquery-turbolinks'
+gem 'select2-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -3,6 +3,7 @@ $(document).on('ready page:load', function () {
     $(".dropdown-button").dropdown();
     $('select').material_select();
     $('.parallax').parallax();
+    $(".select.optional.initialized").select2();
 });
 
 

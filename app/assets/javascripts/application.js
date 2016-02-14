@@ -17,6 +17,9 @@
 //= require materialize-sprockets
 //= require jquery.raty
 //= require ratyrate
+//= require select2
+//= require select2_locale_es
+//= require select2_locale_pt-BR
 //= require custom
 //= require_tree .
 

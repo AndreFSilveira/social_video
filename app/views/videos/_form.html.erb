@@ -16,7 +16,8 @@
     <%= f.input :link, wrapper: :materialize_input %>
     <small class="blue-text">*<%= t("page.title.videos.form.link.alert")%></small>
 
-    <%= f.association :tags %>
+    <%= f.association :tags, class: 'browser-default' %>
+
   <div class="actions center">
     <%= f.button :button %>
   </div>
