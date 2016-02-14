@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   def index
-    @videos = Video.all
+    @videos = Video.paginate(page: params[:page], per_page: 12)
   end
 
   def show

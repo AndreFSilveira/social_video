@@ -35,6 +35,8 @@
     <%= render 'news/comment_form' %>
   <% end %>
 
+  <div id="comments"></div>
+
   <%= link_to news_index_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
     <i class="material-icons left">reply</i>
     <%= t("page.news.action.new.back")%>

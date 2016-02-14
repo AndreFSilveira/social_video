@@ -36,13 +36,18 @@
     <h5 class="blue-text"><%= t("page.news.action.show.comment.title")%>:</h5>
     <%= render 'videos/comments_form' %>
   <% else %>
-      <p class="center">
-        <button id="show-form-login" class="waves-effect waves-light btn"><%= t("page.video.action.show-login") %></button>
-      </p>
+      <div id="login_to_comment">
+        <h4 class="blue-text center"><%= t("page.video.action.show-login") %></h4>
+        <%= render 'sessions/login_comment' %>
+      </div>
   <% end %>
+
+  <div id="comments"></div>
+
   <%= link_to videos_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
       <i class="material-icons left">reply</i>
       <%= t("page.news.action.new.back")%>
   <%end%>
 
 </div>
+

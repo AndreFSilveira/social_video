@@ -33,7 +33,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
 gem 'simple_form'
 gem 'factory_girl'
-gem 'faker', '1.4.2'
 gem 'will_paginate', '3.0.7'
 gem 'will_paginate-materialize'
 gem 'has_friendship'
@@ -41,6 +40,8 @@ gem 'ratyrate'
 gem 'traco', '~> 3.1', '>= 3.1.6'
 gem 'jquery-turbolinks'
 gem 'select2-rails'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +52,7 @@ group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'
+  gem 'faker'
 end
 
 group :development do
@@ -60,5 +62,6 @@ group :development do
   gem 'mysql2', '~> 0.3.10'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'faker'
 end
 

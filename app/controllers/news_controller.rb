@@ -4,7 +4,7 @@ class NewsController < ApplicationController
 
 
   def index
-    @news = News.all
+    @news = News.paginate(page: params[:page], per_page: 12)
   end
 
   def show
@@ -21,11 +21,11 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
-      if @news.save
-        redirect_to @news, notice: 'News was successfully created.'
-      else
-        render :new
-      end
+    if @news.save
+      redirect_to @news, notice: 'News was successfully created.'
+    else
+      render :new
+    end
 
   end
 

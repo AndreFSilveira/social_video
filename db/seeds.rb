@@ -10,14 +10,37 @@ User.create!(name:  "André Felipe Silveira",
              password:              "123456",
              password_confirmation: "123456",
              admin: true)
+Tag.create!(name: 'Acidente')
 
-99.times do |n|
-  name  = "Usiário-#{n+1}"
-  email = "example-#{n+1}@railstutorial.org"
+Tag.create!(name: 'Notícia')
+
+Tag.create!(name: 'Caçador')
+
+20.times do
+  name  = Faker::Name.name
+  email = Faker::Internet.email
   password = "password"
   User.create!(name:  name,
                email: email,
                password:              password,
                password_confirmation: password,
                admin: false)
+
+  title = Faker::Name.title
+  content = Faker::Lorem.paragraph(10)
+  News.create!(title: title,
+              content: content,
+              tag_ids:  [1,2])
 end
+
+  Video.create!(title: 'Caçadorense cria sistema que usa água como combustível',
+                link: 'https://www.youtube.com/watch?v=bOg-cBnCAvQ',
+                tag_ids: 1)
+
+  Video.create!(title: 'Motorista passa mal e bate trator em poste, em Caçador',
+                link: 'https://www.youtube.com/watch?v=VC3F4bl7n_4',
+                tag_ids: [1,3])
+
+  Video.create!(title: 'Profissionais do Bem - Entrevista com o Neurocirurgião Dr. Stefan Szylewicz',
+                link: 'https://www.youtube.com/watch?v=2yAbmiJkScs',
+                tag_ids: [1,2,3])

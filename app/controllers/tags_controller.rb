@@ -15,34 +15,24 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
-
-    respond_to do |format|
-      if @tag.save
-        format.html { redirect_to new_tag_path, notice: t("message.tag.create") }
-      else
-        format.html { render :new }
-      end
+    if @tag.save
+      redirect_to new_tag_path, notice: t("message.tag.create")
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: t("message.tag.update") }
-        format.json { render :show, status: :ok, location: @tag }
-      else
-        format.html { render :edit }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
-      end
+    if @tag.update(tag_params)
+      redirect_to @tag, notice: t("message.tag.update")
+    else
+      render :edit
     end
   end
 
   def destroy
     @tag.destroy
-    respond_to do |format|
-      format.html { redirect_to tags_url, notice: t("message.tag.destroy") }
-      format.json { head :no_content }
-    end
+    redirect_to tags_url, notice: t("message.tag.destroy")
   end
 
   private

@@ -7,23 +7,10 @@
         <%= t("page.model.action.new") %>
     <% end %>
   <%end%>
-
-  <div class="row">
-    <% @videos.each do |video| %>
-      <div class="col s12 m4">
-        <a class="video-link" href="<%= video_path(video) %>">
-          <h5 class="video-title truncate"><%= video.title %></h5>
-        </a>
-        <div class="video-container">
-          <%= embed(video.link) %>
-        </div>
-        <%= rating_for video, "video", :star => 5, :disable_after_rate => true %>
-
-        <%if logged_in? %>
-          <%= render(:partial => "videos/actions", :locals => { :video => video } ) %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= will_paginate %>
+    <div class="row">
+      <%= render @videos%>
+    </div>
+  <%= will_paginate %>
 
 </div>

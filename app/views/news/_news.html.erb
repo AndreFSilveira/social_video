@@ -1,0 +1,12 @@
+<div class="col s12 m4">
+  <a class="link-news" href="<%= news_path(news)%>">
+    <h5 class="video-title truncate"><%= news.title %></h5>
+    <article class="news-content">
+      <%= news.content %>
+    </article>
+    <%= rating_for news, "news", :star => 5, :disable_after_rate => true %>
+    <% if logged_in? %>
+        <%= render(:partial => "news/actions", :locals => { :news => news } ) %>
+    <% end %>
+  </a>
+</div>

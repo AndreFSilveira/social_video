@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="row card-panel">
+      <%= simple_form_for :session, wrapper: :vertical_form, url: login_path do |f| %>
+
+          <%= f.input :email, wrapper: :materialize_input %>
+          <%= f.input :password, wrapper: :materialize_input %>
+          <%= link_to t("page.login.forgot"), new_password_reset_path %>
+
+          <%= f.button :button, t("page.login.submit"), wrapper: :materialize_button, class: 'block' %>
+      <% end %>
+    </div>
+    <p><%= t("page.login.new_user") %> <%= link_to t("page.login.go_to_register"), new_user_path %></p>
+  </div>
+</div>
