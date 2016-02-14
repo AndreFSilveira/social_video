@@ -1,5 +1,15 @@
-<h1>New News</h1>
+<% provide(:title, t("page.title.news.create") ) %>
+<div class="news-create container">
+  <h1 class="center"><%= t("page.title.news.create") %></h1>
+  <div class="row">
+    <div class="col s12 m8 offset-m2">
+      <%= render 'form' %>
+    </div>
+  </div>
 
-<%= render 'form' %>
+  <%= link_to news_index_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
+    <i class="material-icons left">reply</i>
+    <%= t("page.news.action.new.back")%>
+  <%end%>
 
-<%= link_to 'Back', news_index_path %>
+</div>

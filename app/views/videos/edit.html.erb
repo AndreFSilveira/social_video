@@ -1,6 +1,14 @@
-<h1>Editing Video</h1>
+<% provide(:title, t("page.title.videos.edit") ) %>
+<div class="container video-edit">
+  <h1 class="center"><%= t("page.title.videos.edit") %></h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @video %> |
-<%= link_to 'Back', videos_path %>
+  <%= link_to @video, class: 'waves-effect waves-light btn bottom-link' do %>
+      <%= t("page.news.action.new.show")%>
+  <%end%>
+  <%= link_to videos_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
+      <i class="material-icons left">reply</i>
+      <%= t("page.news.action.new.back")%>
+  <%end%>
+</div>

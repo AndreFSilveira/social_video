@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210013558) do
+ActiveRecord::Schema.define(version: 20160213184534) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id",      limit: 4
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160210013558) do
     t.integer  "video_id",      limit: 4
     t.integer  "news_id",       limit: 4
     t.boolean  "aprove",                      default: false
-    t.string   "content_es",    limit: 255
+    t.text     "content_es",    limit: 65535
   end
 
   add_index "comments", ["news_id"], name: "index_comments_on_news_id", using: :btree
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160210013558) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "title_es",      limit: 255
-    t.string   "content_es",    limit: 255
+    t.text     "content_es",    limit: 65535
   end
 
   create_table "news_tags", force: :cascade do |t|

@@ -1,24 +1,25 @@
-<%= simple_form_for @news do |f| %>
-  <% if @news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
-
-      <ul>
-      <% @news.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row card-panel">
+  <%= simple_form_for @news do |f| %>
+      <% if @news.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+              <% @news.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <% News.locale_columns(:title).each do |column| %>
-        <%= f.input column, wrapper: :materialize_input %>
-    <% end %>
-    <% News.locale_columns(:content).each do |column| %>
-        <%= f.input column, wrapper: :materialize_textarea %>
-    <% end %>
+      <% News.locale_columns(:title).each do |column| %>
+          <%= f.input column, wrapper: :materialize_input %>
+      <% end %>
+      <% News.locale_columns(:content).each do |column| %>
+          <%= f.input column, wrapper: :materialize_textarea %>
+      <% end %>
 
-    <%= f.association :tags %>
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+      <%= f.association :tags %>
+      <div class="actions center">
+        <%= f.button :button, wrapper: :materialize_button %>
+      </div>
+  <% end %>
+
+</div>

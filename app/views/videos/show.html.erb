@@ -1,42 +1,48 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @video.title ) %>
+<div class="container video-show">
+  <h2 class="center">
+    <strong><%= t("activerecord.attributes.video.title")%></strong> -
+    <%= @video.title %>
+  </h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <div class="video-container">
+        <%= embed(@video.link) %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Link:</strong>
-  <%= @video.link %>
-</p>
+  <h5 class="blue-text"><%= t("activerecord.models.tag")%>:</h5>
+  <% @tags.each  do |tag| %>
+    <div class="chip indigo darken-2 white-text">
+      <%= tag.name %>
+    </div>
+  <% end %>
 
-<p>
-  <%= rating_for @video, "video", :star => 5, :disable_after_rate => true %>
-</p>
+  <h5 class="blue-text"><%= t("page.video.action.show.comment.rating")%>:</h5>
+  <p>
+    <%= rating_for @video, "video", :star => 5, :disable_after_rate => true %>
+  </p>
 
-<h2>Comments</h2>
-<% @comments.each do |comment| %>
-    <p>
-      <b>Comment:</b>
-      <% if !comment.aprove? %>
-        <% if current_user.admin? %>
-          <%= comment.content %>
-          <p>
-            <%= link_to "Aprovar", comment_aprove_path(comment) %>
-            | <%= link_to "Excluir", comment_destroy_path(comment), method: :delete  %>
-          </p>
-        <% end %>
-      <% else %>
-        <%= comment.content %>
-      <% end %>
-    </p>
-<% end %>
+  <%= link_to edit_video_path(@video), class: 'waves-effect waves-light btn bottom-link' do %>
+      <i class="material-icons right">mode_edit</i>
+      <%= t("page.model.action.edit")%>
+  <%end%>
 
-<%= simple_form_for ([@video, @video.comments.build ]) do |f| %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
-  <%= f.input :content %>
-  <%= f.button :submit %>
-<% end %>
+  <%= render 'comments/comments' %>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+  <% if logged_in? %>
+    <h5 class="blue-text"><%= t("page.news.action.show.comment.title")%>:</h5>
+    <%= render 'videos/comments_form' %>
+  <% else %>
+      <p class="center">
+        <button id="show-form-login" class="waves-effect waves-light btn"><%= t("page.video.action.show-login") %></button>
+      </p>
+  <% end %>
+  <%= link_to videos_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
+      <i class="material-icons left">reply</i>
+      <%= t("page.news.action.new.back")%>
+  <%end%>
+
+</div>

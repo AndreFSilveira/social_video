@@ -1,29 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Videos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><%= video.link %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% provide(:title, t("page.title.videos.index") ) %>
+<div class="container video-index">
+  <h1><%= t("page.title.videos.index") %></h1>
+  <% if logged_in? %>
+    <%= link_to new_video_path, class: 'waves-effect waves-light btn' do %>
+        <i class="material-icons right">add_circle</i>
+        <%= t("page.model.action.new") %>
     <% end %>
-  </tbody>
-</table>
+  <%end%>
 
-<br>
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col s12 m4">
+        <a class="video-link" href="<%= video_path(video) %>">
+          <h5 class="video-title truncate"><%= video.title %></h5>
+        </a>
+        <div class="video-container">
+          <%= embed(video.link) %>
+        </div>
+        <%= rating_for video, "video", :star => 5, :disable_after_rate => true %>
 
-<%= link_to 'New Video', new_video_path %>
+        <%if logged_in? %>
+          <%= render(:partial => "videos/actions", :locals => { :video => video } ) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

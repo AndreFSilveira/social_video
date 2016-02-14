@@ -1,3 +1,4 @@
+<div class="row card-panel">
 <%= simple_form_for(@tag) do |f| %>
   <% if @tag.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +16,8 @@
         <%= f.input column, wrapper: :materialize_input %>
     <% end %>
 
-    <div class="actions">
-    <%= f.submit %>
+    <div class="actions center">
+    <%= f.button :button %>
   </div>
 <% end %>
+</div>

@@ -1,6 +1,14 @@
-<h1>Editing Tag</h1>
+<% provide(:title, t("page.title.tags.edit") ) %>
+<div class="container tag-edit">
+  <h1 class="center"><%= t("page.title.tags.edit") %></h1>
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @tag %> |
-<%= link_to 'Back', tags_path %>
+<%= link_to tags_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
+    <i class="material-icons left">reply</i>
+    <%= t("page.news.action.new.back")%>
+<%end%>
+</div>

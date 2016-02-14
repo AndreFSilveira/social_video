@@ -11,9 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require materialize-sprockets
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
 //= require jquery.raty
 //= require ratyrate
 //= require custom

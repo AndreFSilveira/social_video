@@ -1,32 +1,41 @@
 <div class="container">
-  <h3>Aguardando Aprovação</h3>
-  <ul>
-    <% @user.pending_friends.each do |friend| %>
-        <li>
-          <%= gravatar_for friend, size: 50 %>
-          <%= link_to friend.name, friend %>
-        </li>
-    <% end %>
-  </ul>
+  <% if @user.pending_friends.count > 0 %>
+    <h3>Aguardando Aprovação</h3>
+    <ul>
+      <% @user.pending_friends.each do |friend| %>
+          <li>
+            <%= gravatar_for friend, size: 50 %>
+            <%= link_to friend.name, friend %>
+          </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <h3>Solicitações de Amizade</h3>
-  <ul>
-    <% @user.requested_friends.each do |friend| %>
-        <li>
-          <%= gravatar_for friend, size: 50 %>
-          <%= link_to friend.name, friend %>
-        </li>
-    <% end %>
-  </ul>
+  <% if @user.requested_friends.count > 0 %>
+    <h3>Solicitações de Amizade</h3>
+    <ul>
+      <% @user.requested_friends.each do |friend| %>
+          <li>
+            <%= gravatar_for friend, size: 50 %>
+            <%= link_to friend.name, friend %>
+          </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <h3>Seus Amigos</h3>
-  <ul>
-    <% @user.friends.each do |friend| %>
-        <li>
-          <%= gravatar_for friend, size: 50 %>
-          <%= link_to friend.name, friend %>
-        </li>
-    <% end %>
-  </ul>
+  <% if @user.friends.count > 0%>
+    <h3>Seus Amigos</h3>
+    <ul>
+      <% @user.friends.each do |friend| %>
+          <li>
+            <%= gravatar_for friend, size: 50 %>
+            <%= link_to friend.name, friend %>
+          </li>
+      <% end %>
+    </ul>
+  <% end %>
 
+  <%if @user.friends.count < 1 && @user.requested_friends.count < 1 && @user.pending_friends.count < 1  %>
+    <h3> Não há nenhum registro de amizade</h3>
+  <% end %>
 </div>

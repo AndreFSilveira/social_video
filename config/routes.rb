@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post   'login'   => 'sessions#create', as: 'login_path'
     delete 'logout'  => 'sessions#destroy'
 
-    resources :tags
+    resources :tags,:except => :show
     resources :videos do
       resource :comments
     end

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :aprove]
   before_action :set_comment, only: [ :aprove, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :aprove]
 
   def create
     if params[:video_id].present?
@@ -15,14 +15,18 @@ class CommentsController < ApplicationController
   end
 
   def aprove
-    @comment.aprove = true;
-    @comment.save
-    redirect_to :back, notice: 'O commentário foi aprovado.'
+    if current_user?(@comment.user)
+      redirect_to :back, :flash => { :danger => t("message.news.comments.aprove_your") }
+    else
+      @comment.aprove = true;
+      @comment.save
+      redirect_to :back, notice: t("message.news.comments.aproved")
+    end
   end
 
   def destroy
     @comment.destroy
-    redirect_to :back, notice: 'O commentário foi deletado.'
+    redirect_to :back, notice: t("message.news.comments.destroy")
   end
 
   private

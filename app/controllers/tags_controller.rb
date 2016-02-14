@@ -1,12 +1,9 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:create,:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
 
   def index
     @tags = Tag.all
-  end
-
-  def show
   end
 
   def new
@@ -21,11 +18,9 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
+        format.html { redirect_to new_tag_path, notice: t("message.tag.create") }
       else
         format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,7 +28,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to @tag, notice: t("message.tag.update") }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit }
@@ -45,7 +40,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to tags_url, notice: t("message.tag.destroy") }
       format.json { head :no_content }
     end
   end
@@ -57,6 +52,6 @@ class TagsController < ApplicationController
     end
 
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:tag).permit(:name_pt_br, :name_es)
     end
 end

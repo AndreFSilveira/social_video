@@ -1,12 +1,15 @@
 <% @news.each do |news| %>
   <div class="row">
     <div class="col s12 m8 offset-m2">
-      <h6><%= news.title %></h6>
+      <a href="<%= news_path(news) %>" class="black-text">
+        <h6><%= news.title %></h6>
+      </a>
       <span class="news-start">"</span>
       <p class="news-content">
         <%= news.content %>
       </p>
       <span class="news-end">"</span>
+      <%= rating_for news, "news", :star => 5, :disable_after_rate => true %>
       <small> <%= l news.updated_at.to_date %> </small>
     </div>
   </div>

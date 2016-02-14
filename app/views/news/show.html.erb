@@ -1,42 +1,43 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @news.title ) %>
+<div class="container news-show">
+  <h2 class="center">
+    <strong><%= t("activerecord.attributes.news.title")%></strong> -
+    <%= @news.title %>
+  </h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @news.title %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @news.content %>
-</p>
+  <h3><%= t("activerecord.attributes.news.content")%>:</h3>
+  <article>
+    <%= @news.content %>
+  </article>
 
-<p>
-  <%= rating_for @news, "news", :star => 5, :disable_after_rate => true %>
-</p>
+  <h5 class="blue-text"><%= t("activerecord.models.tag")%>:</h5>
+  <% @tags.each  do |tag| %>
+      <div class="chip indigo darken-2 white-text">
+        <%= tag.name %>
+      </div>
+  <% end %>
 
-<h2>Comments</h2>
-<% @comments.each do |comment| %>
-    <p>
-      <b>Comment:</b>
-      <% if !comment.aprove? %>
-          <% if current_user.admin? %>
-              <%= comment.content %>
-            <p>
-              <%= link_to "Aprovar", comment_aprove_path(comment) %>
-              | <%= link_to "Excluir", comment_destroy_path(comment), method: :delete  %>
-            </p>
-        <% end %>
-    <% else %>
-        <%= comment.content %>
-    <% end %>
-    </p>
-<% end %>
+  <h5 class="blue-text"><%= t("page.video.action.show.comment.rating")%>:</h5>
+  <p>
+    <%= rating_for @news, "news", :star => 5, :disable_after_rate => true %>
+  </p>
 
-<%= simple_form_for ([@news, @news.comments.build ]) do |f| %>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id} %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-<% end %>
+  <%= link_to edit_news_path(@news), class: 'waves-effect waves-light btn bottom-link' do %>
+      <i class="material-icons right">mode_edit</i>
+      <%= t("page.model.action.edit")%>
+  <%end%>
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+  <%= render 'comments/comments' %>
+
+  <% if logged_in? %>
+    <h5 class="blue-text"><%= t("page.news.action.show.comment.title")%>:</h5>
+    <%= render 'news/comment_form' %>
+  <% end %>
+
+  <%= link_to news_index_path, class: 'waves-effect waves-light btn lime darken-2 bottom-link' do %>
+    <i class="material-icons left">reply</i>
+    <%= t("page.news.action.new.back")%>
+  <%end%>
+
+</div>

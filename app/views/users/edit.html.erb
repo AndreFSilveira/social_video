@@ -1,12 +1,16 @@
-<% provide(:title, "Edit user") %>
-<h1 class="center">Update your profile</h1>
+<% provide(:title, t("page.title.users.edit")) %>
+<div class="user-edit">
+  <h1 class="center"> <%= t("page.title.users.edit") %> </h1>
 
-<div class="row">
-  <div class="col m6 offset-m3 s12">
-    <%= render 'form' %>
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
+  <div class="row">
+    <div class="col m6 offset-m3 s12">
+      <div class="row card-panel">
+        <%= render 'form' %>
+        <div class="gravatar-edit">
+          <%= gravatar_for @user %>
+          <a href="http://gravatar.com/emails" target="_blank"><%= t("page.user.edit.action.change_gravatar")%></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

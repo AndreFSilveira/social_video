@@ -1,0 +1,16 @@
+<%= link_to news, class: 'btn-floating btn-large waves-effect waves-light tooltipped green lighten-1',
+            'data-position' => 'top', 'data-delay' => '50',
+            'data-tooltip' => t("page.model.action.show") do %>
+    <i class="material-icons right">visibility</i>
+<%end%>
+<%= link_to edit_news_path(news), class: 'btn-floating btn-large waves-effect waves-light tooltipped lime darken-1',
+            'data-position' => 'top', 'data-delay' => '50',
+            'data-tooltip' => t("page.model.action.edit") do %>
+    <i class="material-icons right">create</i>
+<%end%>
+<%= link_to  news, method: :delete, data: { confirm: t("message.are_you_sure") },
+             class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4',
+             'data-position' => 'top', 'data-delay' => '50',
+             'data-tooltip' => t("page.model.action.destroy") do%>
+    <i class="material-icons right">delete_forever</i>
+<%end%>

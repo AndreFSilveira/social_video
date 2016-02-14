@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new,:make_admin, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :make_admin]
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Bem vindo ao Social video!"
+      flash[:success] = t("message.user.create")
       redirect_to @user
     else
       render 'new'
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = t("message.user.destroy")
     redirect_to users_url
   end
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Conta atualizada"
+      flash[:success] = t("message.user.update")
       redirect_to @user
     else
       render 'edit'
@@ -66,19 +66,15 @@ class UsersController < ApplicationController
 
   def add_friend
     current_user.friend_request(User.find(params[:id]))
-    flash[:success] = "Soliciacão enviada"
+    flash[:success] = t("message.user.add_friend")
     redirect_to users_url
   end
 
   def confirm_friendship
     current_user.accept_request(User.find(params[:id]))
-    flash[:success] = "Amizade confirmada"
+    flash[:success] = t("message.user.confirm_friendship")
     redirect_to :back
   end
-
-  def block_friendship
-  end
-
 
   private
     def user_params

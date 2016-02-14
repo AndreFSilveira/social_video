@@ -10,6 +10,7 @@
  */
 
 ;
+
 (function($) {
   'use strict';
 
@@ -730,7 +731,7 @@
     click        : undefined,
     half         : false,
     halfShow     : true,
-    hints        : ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+    hints        : [':(', ':|', ':', ':)', ':D'],
     iconRange    : undefined,
     mouseout     : undefined,
     mouseover    : undefined,

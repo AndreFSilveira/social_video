@@ -1,23 +1,54 @@
 <li>
   <%= gravatar_for user, size: 50 %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-      | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
-  <% end %>
-
-  <% if current_user.admin? && ! user.admin? %>
-      | <%= link_to "admin", user_make_admin_path(user) %>
-  <% elsif !current_user?(user) %>
-      | <%= link_to "revoke admin", user_revoke_admin_path(user) %>
-  <% end %>
-
-  <% if !current_user?(user) %>
-      |
-      <% if current_user.has_requested_friend user %>
-          <%= link_to "confirm a friendship", user_confirm_friendship_path(user) %>
-      <% elsif !current_user.friends_with?(user) %>
-          <%= link_to "add a friend", user_add_friend_path(user) %>
+  <%= link_to user.name, user, class: 'user-link' %>
+  <ul class="user-actions">
+    <li>
+      <% if current_user.admin? && !current_user?(user) %>
+          <%= link_to user, method: :delete, data: { confirm: t("message.are_you_sure") },
+                      class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4',
+                      'data-position' => 'top', 'data-delay' => '50',
+                      'data-tooltip' => t("page.model.action.destroy") do %>
+            <i class="material-icons right">close</i>
+          <% end %>
       <% end %>
-  <% end %>
+    </li>
+    <li>
+      <% if current_user.admin? && !current_user?(user) %>
+          <% unless user.admin? %>
+              <%= link_to user_make_admin_path(user),
+                          class: 'btn-floating btn-large waves-effect waves-light tooltipped cyan lighten-1',
+                          'data-position' => 'top', 'data-delay' => '50',
+                          'data-tooltip' => t("page.user.list.action.admin") do %>
+                <i class="material-icons right">vpn_key</i>
+              <% end %>
+          <% else%>
+              <%= link_to user_revoke_admin_path(user),
+                          class: 'btn-floating btn-large waves-effect waves-light tooltipped red lighten-1',
+                          'data-position' => 'top', 'data-delay' => '50',
+                          'data-tooltip' => t("page.user.list.action.revoke_admin") do %>
+                <i class="material-icons right">block</i>
+              <% end %>
+          <% end %>
+      <% end %>
+    </li>
+    <li>
+      <% if !current_user?(user) %>
+          <% if current_user.has_requested_friend user %>
+              <%= link_to user_confirm_friendship_path(user),
+                          class: 'btn-floating btn-large waves-effect waves-light tooltipped blue accent-1',
+                          'data-position' => 'top', 'data-delay' => '50',
+                          'data-tooltip' => t("page.user.list.action.confirm_friendship") do %>
+                  <i class="material-icons right">group_add</i>
+              <% end %>
+          <% elsif !current_user.friends_with?(user) %>
+              <%= link_to user_add_friend_path(user),
+                          class: 'btn-floating btn-large waves-effect waves-light tooltipped blue accent-4',
+                          'data-position' => 'top', 'data-delay' => '50',
+                          'data-tooltip' => t("page.user.list.action.add_friend") do %>
+                  <i class="material-icons right">group_add</i>
+              <% end %>
+          <% end %>
+      <% end %>
+    </li>
+  </ul>
 </li>

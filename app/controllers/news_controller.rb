@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:create,:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
 
 
   def index
@@ -9,6 +9,7 @@ class NewsController < ApplicationController
 
   def show
     @comments = @news.comments
+    prepare_tags
   end
 
   def new
@@ -49,5 +50,12 @@ class NewsController < ApplicationController
 
     def news_params
       params.require(:news).permit(:title_pt_br, :title_es, :content_pt_br, :content_es, :tag_ids => [])
+    end
+
+    def prepare_tags
+      @tags = Array.new
+      @news.tag_ids.each do |tag|
+        @tags << Tag.find(tag)
+      end
     end
 end

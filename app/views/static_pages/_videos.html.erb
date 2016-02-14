@@ -1,10 +1,13 @@
 <% @videos.each do |video| %>
  <div class="row">
    <div class="col s12 m8 offset-m2">
-     <h6><%= video.title %></h6>
+     <a href="<%= video_path(video)%>" class="black-text">
+       <h6 class="truncate"><%= video.title %></h6>
+     </a>
      <div class="video-container">
        <%= embed(video.link) %>
      </div>
+     <%= rating_for video, "video", :star => 5, :disable_after_rate => true %>
      <small> <%= l video.updated_at.to_date %> </small>
    </div>
  </div>

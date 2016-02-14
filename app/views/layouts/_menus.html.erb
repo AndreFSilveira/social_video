@@ -1,27 +1,14 @@
+<li><%= link_to t("header.links.video"), videos_path %></li>
+<li><%= link_to t("header.links.news"), news_index_path %></li>
 <% if logged_in? %>
     <li><%= link_to t("header.links.users"), users_path %></li>
     <li class="dropdown">
     <li><%= link_to t("header.links.friends"), user_friendship_path %></li>
-    <li><%= link_to t("header.links.video"), videos_path %></li>
-    <li><%= link_to t("header.links.news"), news_index_path %></li>
+    <li><%= link_to t("header.links.tag"), tags_path %></li>
     <li>
-      <a class="dropdown-button" href="#!" data-activates="dropdown1">
-        <%= t("header.links.account") %>
-        <i class="material-icons right">arrow_drop_down</i>
-      </a>
-      <ul id="dropdown1" class="dropdown-content">
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-        <li><%= link_to "Amizades", user_friendship_path %></li>
-        <li class="divider"></li>
-        <li>
-          <%= link_to "Log out", logout_path, method: "delete" %>
-        </li>
-      </ul>
+      <%= link_to "Log out", logout_path, method: "delete" %>
     </li>
 <% else %>
-    <li><%= link_to t("header.links.video"), login_path %></li>
-    <li><%= link_to t("header.links.news"), login_path %></li>
     <li>
       <%= link_to login_path do %>
           <%= t("header.links.login") %>

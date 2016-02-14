@@ -9,15 +9,163 @@ pt-BR:
       news: 'Notícias'
       account: 'Sua conta'
       login: 'Entrar'
+      tag: 'Tags'
   footer:
     rights: "Todos os direitos reservados"
   home:
     title: 'Bem vindo ao Social Video'
     subtitle:
       news: 'Veja as novidades'
+  page:
+    title:
+      home: 'Home'
+      login: 'Login'
+      singup: 'Cadastro'
+      users:
+        index: 'Lista dos usuários'
+        edit: 'Editar usuário'
+      news:
+        index: 'Lista de Notícias'
+        create: 'Nova Notícia'
+        edit: 'Editar Notícia'
+      videos:
+        index: 'Lista de vídeos'
+        edit: 'Editar vídeo'
+        create: 'Novo vídeo'
+        form:
+          link:
+            alert: 'Somente links do youtube são aceitos.'
+      tags:
+        index: 'Lista de Tags'
+        create: 'Nova Tag'
+        edit: 'Editar Tag'
 
+    model:
+      action:
+        new: 'Novo'
+        show: 'Visualizar'
+        edit: 'Editar'
+        destroy: 'Apagar'
+    user:
+      list:
+        action:
+          delete: 'Excluir'
+          confirm_friendship: 'Confirmar amizade'
+          add_friend: 'Adicionar amigo'
+          admin: 'Admin'
+          revoke_admin: 'Revogar administração'
+      show:
+        action:
+          edit: 'Editar minha conta'
+      edit:
+        action:
+          change_gravatar: 'alterar foto'
+    news:
+      action:
+        new:
+          back: 'Voltar'
+          show: Ver notícia
+        show:
+          comment:
+            aprove: 'Aprovar'
+            destroy: 'Excluir'
+            title: 'Deixe seu comentário abaixo'
+            rating: 'Avalie essa notícia'
+    video:
+      action:
+        show-login: 'Fazer login para comentar'
+        show:
+          loggin: 'Fazer login para comentar'
+          comment:
+            rating: 'Avalie este vídeo'
+    login:
+      forgot: 'Esqueci minha senha'
+      submit: 'Entrar'
+      new_user: 'Novo usuário?'
+      go_to_register: 'Cadastre-se'
+
+  simple_form:
+    labels:
+      session:
+        email: 'Email'
+        password: 'Senha'
+      user:
+        name: 'Nome'
+        email: 'Email'
+        password: 'Senha'
+    hints:
+      session:
+        email: 'Endereço de email obrigatório para o login.'
+        password: 'Senha inválida.'
+      user:
+        email: 'Endereço de email obrigatório para o login.'
+        password: 'Senha inválida.'
+    placeholders:
+      session:
+        email: 'Email'
+        password: '****'
+      user:
+        email: 'Email'
+        password: '****'
+
+  message:
+    are_you_sure: 'Tem certeza?'
+    user:
+      create: 'Bem vindo ao Social video!'
+      confirm_friendship: 'Amizade confirmada!'
+      add_friend: 'Pedido de amizade enviado!'
+      update: 'Usuário atualizado!'
+      destroy: 'Usuário deletado!'
+    session:
+      create: 'E-mail incorreto / senha inválida'
+    news:
+      comments:
+        aprove_your: 'Não é possível aprovar seu prórpio comentário.'
+        aproved: 'O commentário foi aprovado.'
+        destroy: 'O commentário foi deletado.'
+    video:
+      create: 'Vídeo criado com sucesso.'
+      update: 'Vídeo atualizado com sucesso.'
+      destroy: 'Vídeo apagado.'
+    tag:
+      create: 'Tag criada com sucesso.'
+      update: 'Tag Atualizada com sucesso.'
+      destroy: 'Tag apagada.'
 
   activerecord:
+    models:
+      comment:
+        one: Comentário
+        other: Comentários
+      video: Vídeo
+      news: Notícia
+      tag: Tags
+      user: Usuário
+      rate: Avaliação
+      session: Sessão
+    attributes:
+      comment:
+        content: Conteúdo
+      video:
+        title: Título
+        link: URL
+      news:
+        title: Título
+        content: Conteúdo
+      tag:
+        name: Nome
+      user:
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de senha
+        admin: Administrador
+      rate:
+        score: pontuação
+      session:
+        email: Email
+        password: Senha
+        remember_me: Mantenha-me logado
+
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -123,9 +271,9 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: deve ser aceito
-      blank: não pode ficar em branco
-      present: deve ficar em branco
+      accepted: 'deve ser aceito'
+      blank: 'não pode ficar em branco'
+      present: 'deve ficar em branco'
       confirmation: não é igual a %{attribute}
       empty: não pode ficar vazio
       equal_to: deve ser igual a %{count}
@@ -134,7 +282,7 @@ pt-BR:
       greater_than: deve ser maior que %{count}
       greater_than_or_equal_to: deve ser maior ou igual a %{count}
       inclusion: não está incluído na lista
-      invalid: não é válido
+      invalid: 'não é válido'
       less_than: deve ser menor que %{count}
       less_than_or_equal_to: deve ser menor ou igual a %{count}
       model_invalid: 'A validação falhou: %{errors}'
@@ -164,7 +312,7 @@ pt-BR:
     submit:
       create: Criar %{model}
       submit: Salvar %{model}
-      update: Atualizar %{model}
+      update: Atualizar
   number:
     currency:
       format:

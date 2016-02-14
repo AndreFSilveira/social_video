@@ -9,15 +9,160 @@ es:
       news: 'Noticias'
       account: 'Su cuenta'
       login: 'Entrar'
+      tag: 'Tags'
   footer:
     rights: "Todos los derechos reservados"
   home:
     title: 'Bienvenido a Social Video'
     subtitle:
       news: 'Ver las novedades'
+  page:
+    title:
+      home: 'Home'
+      login: 'Login'
+      singup: 'Cadastro'
+      users:
+        index: 'Lista de usuarios'
+        edit: 'Edición de usuario'
+      news:
+        index: 'Listado de noticias'
+        create: 'Nueva historia'
+        edit: 'Editar Notícia'
+      videos:
+        index: 'Listado de vídeos'
+        edit: 'Editar vídeo'
+        create: 'Nuevo vídeo'
+        form:
+          link:
+            alert: 'Sólo se aceptan enlaces de YouTube.'
+      tags:
+          index: 'Listado de Tags'
+          create: 'Nueva Tag'
+          edit: 'Editar Tag'
+    model:
+      action:
+        new: 'Nuevo'
+        show: 'Visualizar'
+        edit: 'Edición'
+        destroy: 'Borrar'
+    user:
+      list:
+        action:
+          confirm_friendship: 'Confirmar la amistad'
+          add_friend: 'Añadir amigo'
+          admin: 'administración'
+          revoke_admin: 'Revocar la administración'
+      show:
+        action:
+          edit: 'Editar mi cuenta'
+      edit:
+        action:
+          change_gravatar: 'cambiar foto'
+    news:
+      action:
+        new:
+          back: 'Retorno'
+          show: Ver noticia
+        show:
+          comment:
+            aprove: 'Aprobar'
+            destroy: 'Borrar'
+            title: 'Deje su comentario a continuación'
+            rating: 'Valorar esta noticia'
+    video:
+      action:
+        show-login: 'Inicia sesión para comentar'
+        show:
+          comment:
+            rating: 'Valorar este video'
+    login:
+      forgot: 'Olvide mi contraseña'
+      submit: 'Entrar'
+      new_user: 'Nuevo usuario?'
+      go_to_register: 'Cadastre-se'
 
+  simple_form:
+    labels:
+      session:
+        email: 'Email'
+        password: 'Contraseña'
+      user:
+        name: 'Nombre'
+        email: 'Email'
+        password: 'Contraseña'
+    hints:
+      session:
+        email: 'Endereço de email obrigatório para o login.'
+        password: 'Senha inválida.'
+      user:
+        email: 'Endereço de email obrigatório para o login.'
+        password: 'Senha inválida.'
+    placeholders:
+      session:
+        email: 'Email'
+        password: '****'
+      user:
+        email: 'Email'
+        password: '****'
+
+  message:
+    are_you_sure: '¿Estás seguro?'
+    user:
+      create: 'Bienvenido a Social Video!'
+      confirm_friendship: 'Amistad confirmado!'
+      add_friend: 'La solicitud de amistad enviada!'
+      update: 'Usuario actualizado!'
+      destroy: 'Usuario eliminado!'
+    session:
+      create: 'E-mail incorrecto / combinación de contraseña'
+    news:
+      comments:
+        aprove_your: 'No se puede aprobar su propia opinión.'
+        aproved: 'El comentario ha sido aceptado.'
+        destroy: 'Se ha eliminado el comentario.'
+    video:
+      create: 'Video creado con éxito'
+      update: 'El video ha actualizado correctamente'
+      destroy: 'Video eliminado'
+    tag:
+      create: 'Tag creado con éxito'
+      update: 'El tag ha actualizado correctamente'
+      destroy: 'Tag eliminado'
 
   activerecord:
+    models:
+      comment:
+        one: Comentario
+        other: Comentarios
+      video: Vídeo
+      news: Noticia
+      tag: Tags
+      user: Usuario
+      rate: Evaluación
+      session: Sesión
+    attributes:
+      comment:
+        content: Contenido
+      video:
+        title: Título
+        link: URL
+      news:
+        title: Título
+        content: Contenido
+      tag:
+        name: Nombre
+      user:
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de la contraseña'
+        admin: Administrador
+      rate:
+        score: Puntuacion
+      session:
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        remember_me: 'No cerrar sesión'
+
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
@@ -164,7 +309,7 @@ es:
     submit:
       create: Crear %{model}
       submit: Guardar %{model}
-      update: Actualizar %{model}
+      update: Actualizar
   number:
     currency:
       format:

@@ -1,0 +1,33 @@
+<h4 class="card-panel center light-blue darken-4 white-text"> <%= t("activerecord.models.comment.other") %> </h4>
+<% @comments.each do |comment| %>
+    <% if comment.aprove? %>
+      <p>
+        <%= link_to comment.user, class: 'block' do %>
+            <%= gravatar_for comment.user, size: 50 %>
+        <%end%>
+        <b><%= t("activerecord.models.comment.one") %>:</b>
+        <%= comment.content %>
+      </p>
+    <% elsif logged_in? %>
+      <% if current_user.admin? %>
+        <p>
+          <%= link_to comment.user, class: 'block' do %>
+              <%= gravatar_for comment.user, size: 50 %>
+          <%end%>
+          <b><%= t("activerecord.models.comment.one") %>:</b>
+          <%= comment.content %>
+            <p>
+              <%= link_to comment_aprove_path(comment),class: 'waves-effect waves-light btn green lighten-1' do %>
+                  <i class="material-icons right">done</i>
+                  <%= t("page.news.action.show.comment.aprove")%>
+              <% end %>
+              <%= link_to comment_destroy_path(comment), method: :delete, class: 'waves-effect waves-light btn deep-orange accent-4' do %>
+                  <i class="material-icons right">clear</i>
+                  <%= t("page.news.action.show.comment.destroy")%>
+              <% end %>
+            </p>
+        </p>
+      <%end%>
+    <% end %>
+    </p>
+<% end %>
