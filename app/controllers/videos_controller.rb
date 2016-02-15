@@ -37,7 +37,11 @@ class VideosController < ApplicationController
 
   def destroy
     @video.destroy
-    redirect_to videos_url, notice: t("message.video.destroy")
+    respond_to do |format|
+      format.html { redirect_to videos_url, notice: t("message.video.destroy") }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 
   private

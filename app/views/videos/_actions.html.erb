@@ -1,4 +1,4 @@
-<div class="action block center">
+<p class="action block center">
   <%= link_to video, class: 'btn-floating btn-large waves-effect waves-light tooltipped green lighten-1',
               'data-position' => 'top', 'data-delay' => '50',
               'data-tooltip' => t("page.model.action.show") do %>
@@ -11,9 +11,9 @@
       <i class="material-icons right">create</i>
   <%end%>
   <%= link_to  video, method: :delete, data: { confirm: t("message.are_you_sure") },
-               class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4',
+               class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4 delete_video',
                'data-position' => 'top', 'data-delay' => '50',
-               'data-tooltip' => t("page.model.action.destroy") do %>
+               'data-tooltip' => t("page.model.action.destroy"),:remote => true do %>
       <i class="material-icons right">delete_forever</i>
   <%end%>
-</div>
+</p>

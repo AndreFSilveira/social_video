@@ -9,8 +9,8 @@
     <i class="material-icons right">create</i>
 <%end%>
 <%= link_to  news, method: :delete, data: { confirm: t("message.are_you_sure") },
-             class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4',
+             class: 'btn-floating btn-large waves-effect waves-light tooltipped deep-orange accent-4 delete_news',
              'data-position' => 'top', 'data-delay' => '50',
-             'data-tooltip' => t("page.model.action.destroy") do%>
+             'data-tooltip' => t("page.model.action.destroy"), :remote => true  do%>
     <i class="material-icons right">delete_forever</i>
 <%end%>
