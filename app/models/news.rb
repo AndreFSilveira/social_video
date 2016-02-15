@@ -10,8 +10,16 @@ class News < ActiveRecord::Base
   ratyrate_rateable "news"
   translates :title, :content, :tags
 
-  searchable do
-    text :title, :content
+  def self.search(search)
+    if search
+      params = {:search => "%#{search}%"}
+      where("title_pt_br LIKE :search
+            OR title_es LIKE :search
+            OR content_pt_br LIKE :search
+            OR content_es LIKE :search ",params)
+    else
+      all
+    end
   end
 
 end

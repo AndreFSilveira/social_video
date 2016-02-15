@@ -41,9 +41,6 @@ gem 'ratyrate'
 gem 'traco', '~> 3.1', '>= 3.1.6'
 gem 'jquery-turbolinks'
 gem 'select2-rails'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem 'progress_bar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

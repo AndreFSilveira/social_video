@@ -4,7 +4,7 @@ class NewsController < ApplicationController
 
 
   def index
-    @news = News.paginate(page: params[:page], per_page: 12)
+    @news = News.search(params[:search]).paginate(page: params[:page], per_page: 12)
   end
 
   def show
@@ -37,17 +37,9 @@ class NewsController < ApplicationController
     end
   end
 
-
   def destroy
     @news.destroy
     redirect_to news_index_url, notice: 'News was successfully destroyed.'
-  end
-
-  def search
-    @news = News.search do
-      fulltext params[:query]
-      paginate(page: params[:page], per_page: (params[:per] || 12))
-    end.results
   end
 
   private

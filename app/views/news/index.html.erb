@@ -1,29 +1,28 @@
 <% provide(:title, t("page.title.news.index") ) %>
 <div class="news-index container">
   <h1><%= t("page.title.news.index") %></h1>
-  <% if logged_in? %>
-    <%= link_to new_news_path, class: 'waves-effect waves-light btn' do %>
-        <i class="material-icons right">add_circle</i>
-        <%= t("page.model.action.new") %>
-    <% end %>
-  <% end %>
 
-  <%= form_tag search_news_index_path, :method => :get do %>
-      <div class="row">
-        <div class="input-field col s6">
-          <%= text_field_tag :query, params[:query] %>
-          <%= label_tag(:query, t("page.news.action.find_by")) %>
-        </div>
-        <div class="input-field col s6">
-          <button class="btn waves-effect waves-light"><%= t("page.news.action.find")%></button>
-        </div>
-      </div>
-
-  <% end %>
-
-  <%= will_paginate %>
+  <%= form_tag news_index_path, method: 'get',autocomplete: 'off', id: "news_search" do %>
     <div class="row">
-      <%= render @news%>
+      <div class="input-field col s6">
+        <%= text_field_tag :search, params[:search] %>
+        <%= label_tag :search, t("page.news.action.find_by") %>
+      </div>
+      <div class="input-field col s6">
+        <button class="btn waves-effect waves-light"><%= t("page.news.action.find")%></button>
+      </div>
     </div>
-  <%= will_paginate %>
+  <% end %>
+
+  <% if logged_in? %>
+      <%= link_to new_news_path, class: 'waves-effect waves-light btn' do %>
+          <i class="material-icons right">add_circle</i>
+          <%= t("page.model.action.new") %>
+      <% end %>
+  <% end %>
+
+  <div class="row" id="news">
+    <%= render 'news/news' %>
+  </div>
+
 </div>
